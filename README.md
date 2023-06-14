@@ -7,3 +7,16 @@ Working memory (WM), a fundamental cognitive process facilitating the temporary 
 ## WorM Dataset
 
 Download the WorM dataset from [HERE](https://drive.google.com/file/d/1-KU74RUE98GIYtZeG6GW2y6cjEzCxVC1/view?usp=sharing)
+Extract the dataset to ```WorM/wm_bench_data/```
+
+```wm_bench_data``` contains raw stimulus and metadata for all trials for all working memory (WM) tasks.
+
+Data generation code for all WM tasks can be found in ```src/data/``` and PyTorch `Dataset` for each task can be found in ```src/data/dataset.py```
+
+## Joint Training and Testing
+
+After extracting the WorM dataset, run the following command from ```WorM/``` to jointly train on all working memory (WM) tasks.
+
+```python -m src.main```
+
+Refer to ```src/args.py``` for possible arguments.
