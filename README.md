@@ -13,9 +13,14 @@ Extract the dataset to ```WorM/wm_bench_data/```
 
 Data generation code for all WM tasks can be found in ```src/data/``` and PyTorch `Dataset` for each task can be found in ```src/data/dataset.py```
 
+### Dependencies
+
+- tested with python 3.8 and cuda 11.3
+- dependencies can be installed using `WorM/requirements.txt`
+
 ## Joint Training and Testing
 
-After extracting the WorM dataset, run the following command from ```WorM/``` to jointly train on all working memory (WM) tasks.
+After extracting the WorM dataset, run the following command from ```WorM/``` directory to jointly train and test on all working memory (WM) tasks.
 
 ```python -m src.main```
 
