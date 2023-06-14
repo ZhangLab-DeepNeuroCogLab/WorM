@@ -25,3 +25,9 @@ After extracting the WorM dataset, run the following command from ```WorM/``` di
 ```python -m src.main```
 
 Refer to ```src/args.py``` for possible arguments.
+
+## Schematic Illustration of all Working Memory tasks
+
+<br>
+<p align="center"><img align="center"  src="./images/Schematic_Illustration.png" alt="..." width="550">
+</p>
