@@ -9,8 +9,8 @@ class Spatial_Coordination_DataGen:
     Task: Spatial Coordination
     '''
 
-    def __init__(self, data_path, grid_size, set_size_options, symmetry_offset_options,
-                 gen_random_trials, held_out_set_sizes, held_out_symmetry_offsets, 
+    def __init__(self, data_path, grid_size, list_length_options, symmetry_offset_options,
+                 gen_random_trials, held_out_list_lengths, held_out_symmetry_offsets, 
                  num_samples, img_size, write):
 
         self.data_path = data_path
@@ -42,22 +42,22 @@ class Spatial_Coordination_DataGen:
             self.test_num_samples = int(num_samples * 0.1)
             self.gen_test_num_samples = int(num_samples * 0.1)
 
-            assert self.train_num_samples % len(set_size_options) == 0
-            assert self.test_num_samples % len(set_size_options) == 0
-            if len(held_out_set_sizes) > 0:
-                assert self.gen_test_num_samples % len(held_out_set_sizes) == 0
+            assert self.train_num_samples % len(list_length_options) == 0
+            assert self.test_num_samples % len(list_length_options) == 0
+            if len(held_out_list_lengths) > 0:
+                assert self.gen_test_num_samples % len(held_out_list_lengths) == 0
 
             assert self.grid_size % 2 == 0
-            assert all([set_size % 2 == 0 for set_size in set_size_options])
-            assert max(set_size_options) <= self.grid_size**2
+            assert all([list_length % 2 == 0 for list_length in list_length_options])
+            assert max(list_length_options) <= self.grid_size**2
 
-            if len(held_out_set_sizes) > 0:
-                assert all([set_size % 2 == 0 for set_size in held_out_set_sizes])
-                assert max(held_out_set_sizes) <= self.grid_size**2
+            if len(held_out_list_lengths) > 0:
+                assert all([list_length % 2 == 0 for list_length in held_out_list_lengths])
+                assert max(held_out_list_lengths) <= self.grid_size**2
 
             assert all([symmetry_offset % 2 == 0 for symmetry_offset in symmetry_offset_options])
 
-            trials = self.gen_random_trials(set_size_options, held_out_set_sizes, 
+            trials = self.gen_random_trials(list_length_options, held_out_list_lengths, 
                                             symmetry_offset_options)
 
             if not os.path.exists(self.train_data_dir):
@@ -73,35 +73,35 @@ class Spatial_Coordination_DataGen:
         else:
             raise NotImplementedError
         
-    def gen_random_trials(self, set_sizes, held_out_set_sizes, symmetry_offset_options):
+    def gen_random_trials(self, list_lengths, held_out_list_lengths, symmetry_offset_options):
         trials = {'train': [], 'test': [], 'gen_test': []}
 
         for split in ['train', 'test', 'gen_test']:
             print('Generating {} trials'.format(split))
             if split == 'train':
                 num_samples = self.train_num_samples
-                set_size_options = set_sizes
+                list_length_options = list_lengths
             elif split == 'test':
                 num_samples = self.test_num_samples
-                set_size_options = set_sizes
+                list_length_options = list_lengths
             elif split == 'gen_test':
                 num_samples = self.gen_test_num_samples
-                set_size_options = held_out_set_sizes
+                list_length_options = held_out_list_lengths
 
             overall_sample_count = 0
-            per_set_size_sample_count = {}
+            per_list_length_sample_count = {}
 
-            if len(set_size_options) > 0:
-                num_samples_per_set_size = num_samples // len(set_size_options)
+            if len(list_length_options) > 0:
+                num_samples_per_list_length = num_samples // len(list_length_options)
 
-            for set_size in set_size_options:
-                print('Generating {} trials for set size {}'.format(split, set_size))
-                per_set_size_sample_count[set_size] = 0
+            for list_length in list_length_options:
+                print('Generating {} trials for set size {}'.format(split, list_length))
+                per_list_length_sample_count[list_length] = 0
 
-                while per_set_size_sample_count[set_size] < num_samples_per_set_size:
+                while per_list_length_sample_count[list_length] < num_samples_per_list_length:
                     left_grid_cell_idxs = [((random.choice(range(self.grid_size))*self.grid_size) + 
                                             random.choice(range(self.grid_size//2))) 
-                                            for _ in range(set_size // 2)]
+                                            for _ in range(list_length // 2)]
                                         
                     right_grid_cell_idxs = [(idx + (self.grid_size - 2*(idx%self.grid_size)) - 1) 
                                             for idx in left_grid_cell_idxs]
@@ -114,7 +114,7 @@ class Spatial_Coordination_DataGen:
                     else:
                         symmetry_offset = random.choice(symmetry_offset_options)
 
-                        while symmetry_offset > set_size:
+                        while symmetry_offset > list_length:
                             symmetry_offset = random.choice(symmetry_offset_options)
 
                         right_inactive_grid_cell_idxs = [idx for idx in range(self.grid_size**2) 
@@ -133,13 +133,13 @@ class Spatial_Coordination_DataGen:
 
                     memory_stim_fnames = [split+'_'+str(overall_sample_count).zfill(6)+
                                           '_memory_'+str(i).zfill(3)+'.png' 
-                                          for i in range(set_size)]
+                                          for i in range(list_length)]
                     
                     gt_pattern_fname = split+'_'+str(overall_sample_count).zfill(6)+'_gt_pattern.png'
                     
                     trials[split].append({'grid_size': self.grid_size, 
-                                          'set_size': set_size, 
-                                          'max_set_size': max(set_size_options), 
+                                          'list_length': list_length, 
+                                          'max_list_length': max(list_length_options), 
                                           'symmetry_offset': symmetry_offset, 
                                           'gt_item': gt_item, 
                                           'gt': gt, 
@@ -149,7 +149,7 @@ class Spatial_Coordination_DataGen:
                                           'memory_stim_fnames': memory_stim_fnames})
                     
                     overall_sample_count += 1
-                    per_set_size_sample_count[set_size] += 1
+                    per_list_length_sample_count[list_length] += 1
 
         return trials
     
