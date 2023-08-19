@@ -525,6 +525,28 @@ class Spatial_Coordination_Dataset(Dataset):
 
 class Spatial_Integration_Dataset(Dataset):
 
+    """Dataset for the Spatial Integration task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size_options (list, optional): Size of the underlying grid.
+        pattern_size_options (list, optional): Complete drawing sizes.
+        part_size_options (list, optional): Partial drawing sizes.
+        distractor_difference_options (list, optional): Pattern-Distract diffs.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_grid_sizes (list, optional): Held-out grid sizes.
+        held_out_pattern_sizes (list, optional): Held-out drawing sizes.
+        held_out_part_sizes (list, optional): Held-out partial drawing sizes.
+        held_out_distractor_diffs (list, optional): Held-out Pattern-Distract diffs.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+
     def __init__(self, data_path, max_seq_len=20, grid_size_options=[4], pattern_size_options=[12], 
                  part_size_options=[3, 4, 6], distractor_difference_options=[1], 
                  gen_random_trials=True, held_out_grid_sizes=[], 
@@ -598,6 +620,23 @@ class Spatial_Integration_Dataset(Dataset):
 
 class Spatial_Task_Switching_Dataset(Dataset):
 
+    """Dataset for the Spatial Task Switching task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        variant (str, optional): Task variant ('Cued' or 'Alternate').
+        trial_lengths_options (list, optional): List of trial lengths.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_trial_lengths (list, optional): Held-out trial lengths.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+
     def __init__(self, data_path, max_seq_len=20, variant='Cued', trial_lengths_options=[10, 15, 20], 
                  gen_random_trials=True, held_out_trial_lengths=[],
                  num_samples=48000, img_size=224, rs_img_size=224, write=True, split='train'):
@@ -658,6 +697,25 @@ class Spatial_Task_Switching_Dataset(Dataset):
 
 class Color_Orientation_Size_Gap_Conjunction_Change_Detection_Dataset(Dataset):
 
+    """Dataset for the Color, Orientation, Size, Gap, or Conjunction Change Detection task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        variant (str, optional): Task variant ('Color', 'Orientation', 'Size', 'Gap', or 'Conjunction').
+        set_size_options (list, optional): Set sizes.
+        ri_options (list, optional): Retention intervals.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_set_size_options (list, optional): Held-out set sizes.
+        held_out_ri_options (list, optional): Held-out retention intervals.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+    
     def __init__(self, data_path, max_seq_len=20, variant='Color', set_size_options=[2, 4, 6, 8, 12], 
                  ri_options=[2, 6, 10, 14, 18], gen_random_trials=True, held_out_set_size_options=[],
                  held_out_ri_options=[], num_samples=48000, img_size=224, rs_img_size=224, 
@@ -746,6 +804,26 @@ class Color_Orientation_Size_Gap_Conjunction_Change_Detection_Dataset(Dataset):
         
 
 class Complex_Span_Dataset(Dataset):
+
+    """Dataset for the Complex Span task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        num_storage_options (list, optional): Number of storage items.
+        num_distractor_options (list, optional): Number of distractor items.
+        visual_memory_grid_size (int, optional): Grid size for visual storage.
+        spatial_distractor_grid_size_options (list, optional): Grid size for spatial distract.
+        spatial_distractor_set_size_options (list, optional): Set sizes for spatial distract.
+        spatial_distractor_symmetry_offset_options (list, optional): Symmetry offset for spatial distractors.
+        gen_random_trials (bool, optional): Generate random trials.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
 
     def __init__(self, data_path, max_seq_len=20, num_storage_options=[2], num_distractor_options=[0, 1, 3, 5], 
                  visual_memory_grid_size=4, spatial_distractor_grid_size_options=[10], 
