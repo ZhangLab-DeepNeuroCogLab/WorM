@@ -26,6 +26,12 @@ Extract the dataset to ```WorM/wm_bench_data/```
 - tested with python 3.8 and cuda 11.3
 - dependencies can be installed using `WorM/requirements.txt`
 
+## Pretrained models
+
+Download pre-trained models from [HERE](https://drive.google.com/file/d/1kcs6-r247XxGIb-06_09Fc3wHgK0Tysf/view?usp=sharing)
+
+We provide pre-trained models for rnn-96, rnn-256, rnn-1024, gru-96, gru-256, gru-1024, lstm-96, lstm-256, lstm-1024, trf-96, trf-256, and trf-1024.
+
 ## Joint Training and Testing
 
 After extracting the WorM dataset, run the following command from ```WorM/``` directory to jointly train and test on all working memory (WM) tasks.
