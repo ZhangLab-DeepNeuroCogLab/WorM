@@ -116,6 +116,26 @@ class Spatial_Memory_Updating_Dataset(Dataset):
 
 
 class Visual_Serial_Recall_Recognition_Dataset(Dataset):
+    
+    """Dataset for the Visual Serial Recall/Recognition task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        probe_variant (str, optional): Probe variant ('Recall' or 'Recognition').
+        grid_size (int, optional): Size of the grid for the memory patterns.
+        list_length_options (list, optional): List lengths.
+        distractor_difference_options (list, optional): Pattern-Distract diffs.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_list_lengths (list, optional): Held-out list lengths.
+        held_out_distractor_diffs (list, optional): Held-out pattern-distract diffs.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
 
     def __init__(self, data_path, max_seq_len=20, probe_variant='Recall', grid_size=6, 
                  list_length_options=[3, 4, 5, 6], distractor_difference_options=[2, 4, 6], 
@@ -214,6 +234,25 @@ class Visual_Serial_Recall_Recognition_Dataset(Dataset):
 
 class Spatial_Free_Recall_Dataset(Dataset):
 
+    """Dataset for the Spatial Free Recall task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size (int, optional): Size of the underlying grid in memory items.
+        set_size_options (list, optional): Number of active squares (Green squares).
+        list_length_options (list, optional): List lengths.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_set_sizes (list, optional): Held-out set sizes.
+        held_out_list_lengths (list, optional): Held-out list lengths.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+
     def __init__(self, data_path, max_seq_len=20, grid_size=6, set_size_options=[30], 
                  list_length_options=[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 18], 
                  gen_random_trials=True, held_out_set_sizes=[], held_out_list_lengths=[],
@@ -287,6 +326,27 @@ class Spatial_Free_Recall_Dataset(Dataset):
     
 
 class Visual_Item_Recognition_Dataset(Dataset):
+
+    """Dataset for the Visual Item Recognition task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size (int, optional): Size of the grid for the memory patterns.
+        list_length_options (list, optional): List lengths.
+        distractor_difference_options (list, optional): Pattern-Distract diffs.
+        ri_options (list, optional): Retention intervals.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_list_lengths (list, optional): Held-out list lengths.
+        held_out_distractor_diffs (list, optional): Held-out pattern-distract diffs.
+        held_out_ri_options (list, optional): Held-out retention intervals.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
 
     def __init__(self, data_path, max_seq_len=20, grid_size=6,  
                  list_length_options=[4], distractor_difference_options=[4], 
