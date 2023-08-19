@@ -88,9 +88,9 @@ Refer below for possible arguments and modify them in ```src/args.py``` as per y
 
 ## Custom Data Generation
 
-To generate your own version of data for a specific task with different conditions, navigate to ```WorM/``` and use the `Dataset` class for the specific task. 
+To generate your own version of data for a specific task with different conditions, navigate to ```WorM/``` and use the `Dataset` class for the specific task. The dataset class for each task contains a docstring for a detailed explanation of the arguments.
 
-For example, in ```WorM/``` directory, use the following python script to generate and load your own dataset for VIR task,
+For example, in ```WorM/``` directory, one can use few python lines to generate and load your own dataset for Visual Item Recognition (VIR) task,
 
 ```python
 from src.data.dataset import Visual_Item_Recognition_Dataset
