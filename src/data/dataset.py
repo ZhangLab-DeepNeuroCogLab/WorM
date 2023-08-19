@@ -427,7 +427,26 @@ class Visual_Item_Recognition_Dataset(Dataset):
 
 class Spatial_Coordination_Dataset(Dataset):
 
-    def __init__(self, data_path, max_seq_len=20, grid_size=8, set_size_options=[4], 
+    """Dataset for the Spatial Coordination task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size (int, optional): Size of the grid.
+        list_length_options (list, optional): List lengths.
+        symmetry_offset_options (list, optional): List of symmetry offset options.
+        gen_random_trials (bool, optional): Generate random trials.
+        held_out_list_lengths (list, optional): Held-out list lengths.
+        held_out_symmetry_offsets (list, optional): Held-out symmetry offsets.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        show_gt_pattern (bool, optional): Show ground truth pattern.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+    """
+
+    def __init__(self, data_path, max_seq_len=20, grid_size=8, list_length_options=[4], 
                  symmetry_offset_options=[4], gen_random_trials=True, 
                  held_out_set_sizes=[], held_out_symmetry_offsets=[],
                  num_samples=24000, img_size=224, rs_img_size=224, write=True, 
@@ -438,7 +457,7 @@ class Spatial_Coordination_Dataset(Dataset):
         self.task_data_path = os.path.join(data_path, 'Spatial_Coordination')
 
         if not os.path.exists(self.task_data_path):
-            Spatial_Coordination_DataGen(data_path, grid_size, set_size_options, 
+            Spatial_Coordination_DataGen(data_path, grid_size, list_length_options, 
                                          symmetry_offset_options, gen_random_trials, 
                                          held_out_set_sizes, held_out_symmetry_offsets, 
                                          num_samples, img_size, write)
