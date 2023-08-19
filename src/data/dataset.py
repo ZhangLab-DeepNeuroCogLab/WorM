@@ -19,6 +19,26 @@ from src.data.complex_span import Complex_Span_DataGen
 
 class Spatial_Memory_Updating_Dataset(Dataset):
 
+    """Dataset for the Spatial Memory Updating task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size (int, optional): Size of the grid within the green square. 
+        set_size_options (list, optional): Set sizes (Number of green squares).
+        presentation_time_options (list, optional): Number of presentation time steps.
+        num_updates_options (list, optional): Number of memory updates in each trial.
+        held_out_set_sizes (list, optional): Held-out set sizes.
+        held_out_num_updates (list, optional): Held-out number of memory updates.
+        gen_random_trials (bool, optional): Generate random trials.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+
     def __init__(self, data_path, max_seq_len=20, grid_size=3, set_size_options=[1, 2, 3, 4], 
                  presentation_time_options=[1], num_updates_options=[8], 
                  held_out_set_sizes=[], held_out_num_updates=[], gen_random_trials=True,
