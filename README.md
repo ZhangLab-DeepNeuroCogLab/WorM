@@ -96,7 +96,32 @@ Refer below for possible arguments and modify them in ```src/args.py``` as per y
 
 To generate your own version of data for a specific task with different conditions, navigate to ```WorM/``` and use the `Dataset` class for the specific task. The dataset class for each task contains a docstring for a detailed explanation of the arguments.
 
-For example, in ```WorM/``` directory, one can use few python lines to generate and load your own dataset for Visual Item Recognition (VIR) task,
+Following shows a docstring example for Spatial Memory Updating (SMU) task:
+```python
+class Spatial_Memory_Updating_Dataset(Dataset):
+
+    """Dataset for the Spatial Memory Updating task.
+
+    Args:
+        data_path (str): Path to the data folder.
+        max_seq_len (int, optional): Maximum trial length.
+        grid_size (int, optional): Size of the grid within the green square. 
+        set_size_options (list, optional): Set sizes (Number of green squares).
+        presentation_time_options (list, optional): Number of presentation time steps.
+        num_updates_options (list, optional): Number of memory updates in each trial.
+        held_out_set_sizes (list, optional): Held-out set sizes.
+        held_out_num_updates (list, optional): Held-out number of memory updates.
+        gen_random_trials (bool, optional): Generate random trials.
+        num_samples (int, optional): Total samples to generate (includes all splits).
+        img_size (int, optional): Input image size (for generation).
+        rs_img_size (int, optional): Resized image size (for training).
+        write (bool, optional): Write data to disk.
+        split (str, optional): Split type ('train', 'test', 'gen_test').
+
+    """
+```
+
+For example, in ```WorM/``` directory, one can use a few python lines to generate and load your own dataset for any task. The below line of code shows an example of generating and loading dataset for the Visual Item Recognition (VIR) task.
 
 ```python
 from src.data.dataset import Visual_Item_Recognition_Dataset
