@@ -147,3 +147,16 @@ VIR_Task_Test_Dataset = Visual_Item_Recognition_Dataset(data_path='./your-folder
                                                         split='test')
 ```
 
+## Other files
+
+In this repo, we also provide multiple notebooks for data visualization, evaluation, and neural analysis. Here is a non-comprehensive list of them, with their purposes,
+
+* `viz_data.ipynb`: visualize trials of different WM tasks.
+* `bench_cd_task.ipynb`: evaluation and analysis of CD task.
+* `bench_cs_task.ipynb`: evaluation and analysis of CS task.
+* `bench_smu_task.ipynb`: evaluation and analysis of SMU task.
+* `bench_vir_task.ipynb`: evaluation and analysis of VIR task.
+* `bench_vsr_task.ipynb`: evaluation and analysis of VSR task.
+* `bench_vsrec_task.ipynb`: evaluation and analysis of VSRec task.
+* `bench_sts_task.ipynb`: evaluation and neural analysis on STS task.
+* `bench_neural_analysis.ipynb`: neural analysis of computational models.
