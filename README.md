@@ -2,6 +2,8 @@
 
 Authors: Ankur Sikarwar and Mengmi Zhang
 
+This work has been accepted to the **Conference on Neural Information Processing Systems (NeurIPS 2023)**.
+
 <p align="left">
   <a href="https://arxiv.org/abs/2307.10768.pdf"><img src="http://img.shields.io/badge/Paper-PDF-red.svg"></a>
 </p>
