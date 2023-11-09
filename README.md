@@ -10,7 +10,7 @@ This work has been accepted to the **Conference on Neural Information Processing
   &nbsp
   <a href="https://www.youtube.com/watch?v=OBgZe2XMffc&ab_channel=AnkurSikarwar" target="_blank"><img src="https://img.shields.io/badge/Presentation-Video-blue.svg"></a>
   &nbsp
-  <a href="https://drive.google.com/file/d/1xeDPpfXpAqVOrnpO_73BhmA_prRvetyw/view?usp=sharing" target="_blank"><img src="https://img.shields.io/badge/Paper-Poster-green.svg"></a>
+  <a href="https://drive.google.com/file/d/1BgnnLS_lnCzzHLpLdsbWVvrbLGX1kJaz/view?usp=sharing" target="_blank"><img src="https://img.shields.io/badge/Paper-Poster-green.svg"></a>
 </p>
 
 Working memory (WM), a fundamental cognitive process facilitating the temporary storage, integration, manipulation, and retrieval of information, plays a vital role in reasoning and decision-making tasks. Robust benchmark datasets that capture the multifaceted nature of WM are crucial for the effective development and evaluation of AI WM models. Here, we introduce a comprehensive Working Memory (WorM) benchmark dataset for this purpose. WorM comprises 10 tasks and a total of 1 million trials, assessing 4 functionalities, 3 domains, and 11 behavioral and neural characteristics of WM.
